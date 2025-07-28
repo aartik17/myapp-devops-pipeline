@@ -1,3 +1,4 @@
-output "instance_ip" {
-  value = aws_eip.ip.public_ip
+output "ec2_public_ip" {
+  value = aws_instance.my_ec2.public_ip
+  description = "Public IP of the EC2 instance"
 }
