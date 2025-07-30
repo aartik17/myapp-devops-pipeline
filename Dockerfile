@@ -2,15 +2,15 @@ FROM node:18
 
 WORKDIR /app
 
-# Copy package.json separately for better layer caching
-COPY src/package*.json ./
+# Copy package.json and package-lock.json first (for better Docker layer caching)
+COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy app source code
-COPY src/ .
+# Copy the application source code
+COPY src/ /app
 
-# Expose and run
-EXPOSE 3000
-CMD ["node", "index.js"]
+# Expose port and define the start command if needed
+# EXPOSE 3000
+# CMD ["npm", "start"]
